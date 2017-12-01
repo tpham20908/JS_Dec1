@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Beatiful Birds</title>
+    <script type="text/javascript">
+    	// creating XMLHttpRequest object
+    	var xhr = false;
+    	// Configuring XMLHttpRequest object
+    	if (window.XMLHttpRequest) {
+    		// window.alert("Using XMLHttpRequest Object.");
+    		// initializing xhr object
+    		xhr = new XMLHttpRequest();
+    	}
+    	else if (window.ActiveXObject) {
+    		// window.alert("Using ActiveX Object.");
+    		// initializing xhr object
+    		xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    	}
+
+    	// handling data downloads from the server using anomous function
+    	function getData(dataSource, divID) {
+    		if (xhr) {
+    			var obj = document.getElementById(divID);
+    			xhr.open("GET", dataSource, true);
+
+    			// passing data to the server using AJAX with get or post http methods
+    			xhr.onreadystatechange = function() {
+    				if (xhr.readyState === 4 && xhr.status === 200) {
+    					obj.innerHTML = xhr.responseText;
+    				}
+    			}
+
+    			// send the request
+    			xhr.send();
+    		}
+    	}
+    </script>
+</head>
+<body>
+	<form>
+		<input type="button" value="Fetch another bird" onclick="getData('data.txt', 'targetDiv');" />
+	</form>
+
+	<div id="targetDiv">
+		<figure>
+			<img src="Bird_Images/bird_01.jpg" title="Beautiful bird">
+		</figure>
+		
+	</div>
+</body>
+</html>

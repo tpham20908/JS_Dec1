@@ -1,0 +1,3 @@
+<figure>
+	<img src="Bird_Images/bird_02.jpg" title="Beautiful bird">
+</figure>
